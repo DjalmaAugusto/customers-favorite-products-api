@@ -9,10 +9,13 @@ const JWT = {
     expiresIn: process.env.JWT_EXPIRES_IN
 }
 
+const PRODUCT_SERVICE_URL = process.env.PRODUCT_SERVICE_URL
+
 module.exports = {
     ENVIRONMENT,
     PORT,
     DB,
     CACHE_DB,
-    JWT
+    JWT,
+    PRODUCT_SERVICE_URL
 }
