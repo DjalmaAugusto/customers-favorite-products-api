@@ -19,6 +19,7 @@ git clone https://github.com/DjalmaAugusto/customers-favorite-products-api.git
 ### Install Dependencies
 
 ```
+cd customers-favorite-products-api
 npm install
 ```
 ## How to testing
