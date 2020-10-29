@@ -2,7 +2,7 @@ const express = require("express")
 const CustomerProduct = require('../../../database/repositories/CustomerProduct')
 const Customer = require('../../../database/repositories/Customer')
 
-const ProductService = require('../../../services/productApi')
+const productService = require('../../../services/productApi')
 const requestHandler = require('../../../helpers/requestHandler')
 const { NotFoundResource, DuplicateResource, BadRequest } = require('../../../helpers/errorHandler')
 const { getAsync: redisGet, setAsync: redisSet  } = require('../../../database/cache/redisClient')
@@ -73,7 +73,7 @@ router.get('/:email/products/',
         const promises = customerProducts.map( async ({ productId }) => {
             let product = await redisGet(productId)
             if(!product){
-                product = await ProductService.getProduct({ productId })
+                product = await productService.getProduct({ productId })
                 await redisSet(productId, JSON.stringify(product), 'EX', 60 * 60 * 12)
             } else {
                 product = JSON.parse(product)
@@ -144,7 +144,7 @@ router.get('/:email/products/:productId',
         if(!customerProduct) { throw new NotFoundResource ('Product not found in the favorite list')}
         let product = await redisGet(productId)
         if(!product){
-            product = await ProductService.getProduct({ productId })
+            product = await productService.getProduct({ productId })
             if(!product){ throw new NotFoundResource ('Product not found') }
             await redisSet(productId, JSON.stringify(product), 'EX', 60 * 60 * 12)
         } else {
@@ -210,7 +210,7 @@ router.post('/:email/products/',
         if(!customer) { throw new NotFoundResource ('Customer not found')}
         let customerProduct = await CustomerProduct.findOne( { customerEmail: email, productId })
         if(customerProduct) { throw new DuplicateResource ('Product already added in the favorite list')}
-        let product = await ProductService.getProduct({ productId })
+        let product = await productService.getProduct({ productId })
         if(!product){ throw new NotFoundResource ('Product not found') }
         await redisSet(productId, JSON.stringify(product), 'EX', 60 * 60 * 12)
         customerProduct = { productId, customerEmail: email }
