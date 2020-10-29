@@ -112,11 +112,3 @@ Go to [http://localhost:3000/v1/docs](http://localhost:3000/v1/docs) in your bro
     ├── package-lock.json
     ├── package.json
     ├── README.md
-
-user1 
-9ea7912f-2ba0-8185-6183-74f7024e4c95
-6c205921-8484-2a0a-f722-cef3bd3d60ef
-
-user2
-6c205921-8484-2a0a-f722-cef3bd3d60ef
-c1747e36-1ea9-7104-9bfc-88ced6c708c6
