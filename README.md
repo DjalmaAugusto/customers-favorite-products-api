@@ -25,6 +25,8 @@ npm install
 
 ### Testing API
 
+Reminder: `rename 'env-sample' file to '.env'`
+
 ```
 npm test
 ```
@@ -32,8 +34,10 @@ npm test
 ## Running API
 
 ### Locally
+
+Reminder: `rename 'env-sample' file to '.env'`
+
 ```
-rename 'env-sample' file to '.env'
 npm start
 ```
 
