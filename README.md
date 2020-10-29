@@ -33,6 +33,7 @@ npm test
 
 ### Locally
 ```
+rename 'env-sample' file to '.env'
 npm start
 ```
 

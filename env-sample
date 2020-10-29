@@ -1,0 +1,17 @@
+# Environment Name
+NODE_ENV=development
+
+# Server listen to this port
+PORT=3000
+
+# Database
+MONGO_DB=mongodb://localhost:27017/luizalabs
+
+# Cache Database 
+REDIS_DB=redis://localhost:6379?ConnectTimeout=5000&IdleTimeOutSecs=180")
+
+#AUTH
+JWT_SECRET=tRsrsT+.j?S+#\7(p!nNWPefYF"jBe)=,eKup>Juj>_n`2]Y[wr$S%pCSvLWgYXgCPMr/\:\{(^(F8LWzWy^#$G\4kS_Hq)BH!,fypuM':ab'sP{:e*tE<;7MUytMJCS
+JWT_EXPIRES_IN=3600000
+
+PRODUCT_SERVICE_URL=http://challenge-api.luizalabs.com/api/product
