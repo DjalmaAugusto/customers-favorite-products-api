@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: production
+      MONGO_DB: mongodb://mongo:27017/luizalabs
+      REDIS_DB: redis
+      JWT_SECRET: tRsrsT+.j?S+#\7(p!nNWPefYF"jBe)=,eKup>Juj>_n`2]Y[wr$S%pCSvLWgYXgCPMr/\:\{(^(F8LWzWy^#$G\4kS_Hq)BH!,fypuM':ab'sP{:e*tE<;7MUytMJCS
+      JWT_EXPIRES_IN: 3600000
+      PRODUCT_SERVICE_URL: http://challenge-api.luizalabs.com/api/product
+    links:
+      - mongo
+      - redis
+    depends_on:
+      - mongo
+      - redis
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+networks: 
+    app-network:
+      driver: bridge
