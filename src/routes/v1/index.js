@@ -1,6 +1,5 @@
-const health = require('express-healthcheck')
-
 const express = require("express")
+const health = require('express-healthcheck')
 
 const router = express.Router()
 
