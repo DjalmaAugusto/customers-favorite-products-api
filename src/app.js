@@ -2,6 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const routesV1 = require("./routes/v1")
 
+const { serializeError } = require('../src/helpers/errorHandler')
+
 const { logger, errorLogger } = require('./middleware/requestLogger')
 
 // Connect database
@@ -18,7 +20,7 @@ app.use('/v1', routesV1)
 
 // express error handling
 app.use((err, req, res, next) => {
-    res.status(500).json(err.message);
+    res.status(err.httpCode || 500).json(serializeError(err));
 })
 
 module.exports = app
